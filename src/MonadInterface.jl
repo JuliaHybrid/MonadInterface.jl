@@ -15,7 +15,7 @@ function check_rules(f, M, a, ::Val{:fMa})
     @assert mbind(mreturn(M, a), f) == f(a)
 end
 
-function check_rules(m, M, a, ::Val{:mMa})
+function check_rules(m, M, ::Val{:mM})
     @assert mbind(m, x -> mreturn(M, x)) == m
 end
 

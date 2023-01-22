@@ -1,0 +1,4 @@
+name = "MonadInterface"
+uuid = "4c81018e-a0fd-4a0d-a53b-43c59f4db333"
+authors = ["overshiki <newlesophy7.0@gmail.com>"]
+version = "0.1.0"

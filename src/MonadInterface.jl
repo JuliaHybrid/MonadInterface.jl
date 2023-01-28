@@ -17,10 +17,10 @@ since mbind is so convinient, we what an infix operator for it. In Haskell, we h
 """
 (>>>)(ma, f::FunctionUnion) = mbind(ma, f)
 
-"""
-one good news is that we can also define the reverse order operator as (>>)
-"""
-(<<<)(f::FunctionUnion, ma) = mbind(ma, f)
+# """
+# one good news is that we can also define the reverse order operator as (>>)
+# """
+# (<<<)(f::FunctionUnion, ma) = mbind(ma, f)
 
 # function join end 
 # function mreturn end

@@ -3,7 +3,23 @@ module MonadInterface
 function unwrap end
 function fmap end 
 # function mbind end 
-mbind(ma, f::Function) = f(unwrap(ma))
+
+"""
+interface for Functions, note that in this case, instance of T should be callable, just as what an instance of Function does
+"""
+const FunctionType{T} = Union{T, Function}
+
+mbind(ma, f::FunctionType) = f(unwrap(ma))
+
+"""
+since mbind is so convinient, we what an infix operator for it. In Haskell, we have >>=, however, in julia we can not define an operator with more than 2 special characters, thus symbols like >>= is not avaliable. Here, we instead use >>, note that in Haskell >> has a different meaning, but as long as we are in julia, we just omit this convention.
+"""
+(>>)(ma, f::FunctionType) = mbind(ma, f)
+
+"""
+one good news is that we can also define the reverse order operator as (>>)
+"""
+(<<)(f::FunctionType, ma) = mbind(ma, f)
 
 # function join end 
 # function mreturn end

@@ -12,10 +12,10 @@ const FunctionUnion = Union{FunctionType, Function}
 mbind(ma, f::FunctionUnion) = f(unwrap(ma))
 
 """
-since mbind is so convinient, we what an infix operator for it. In Haskell, we have >>=, however, in julia we can not define an operator with symbols like >>=. Here, we instead use >>>.
+since mbind is so convinient, we what an infix operator for it. In Haskell, we have >>=, however, in julia we can not define an operator with symbols like >>=. Here, we instead use >>. Note that >> has different meaning in Haskell, but as long as we are in julia, we may not follow this convention.
 """
-(>>>)(ma, f::FunctionUnion) = mbind(ma, f)
-
+(>>)(ma, f::FunctionUnion) = mbind(ma, f)
+(<<)(f::FunctionUnion, ma) = mbind(ma, f)
 
 # function join end 
 # function mreturn end
